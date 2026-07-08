@@ -16,7 +16,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
     settings.FRONTEND_ORIGIN.strip(),
-    "https://aire-platform-eta.vercel.app",
+    "https://aire-platform-eta.vercel.app/",
     "http://localhost:5173",
     "http://127.0.0.1:5173",
     "http://localhost:5174",
