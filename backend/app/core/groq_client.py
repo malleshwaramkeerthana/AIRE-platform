@@ -19,15 +19,25 @@ def generate_text(prompt: str) -> str:
     for attempt in range(max_retries):
         try:
             response = client.chat.completions.create(
-                model=MODEL_NAME,
-                messages=[
-                    {
-                        "role": "user",
-                        "content": prompt
-                    }
-                ],
-                temperature=0.3
-            )
+            model=MODEL_NAME,
+            messages=[
+                {
+                    "role": "system",
+                    "content": (
+                        "You are a software engineering assistant. "
+                        "When JSON output is requested, return ONLY valid JSON. "
+                        "Do not include markdown, explanations, comments, "
+                        "or code fences."
+                    )
+                },
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ],
+            temperature=0.1,
+            response_format={"type": "json_object"}
+        )
 
             return response.choices[0].message.content
 
