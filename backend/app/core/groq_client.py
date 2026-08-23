@@ -10,7 +10,7 @@ client = Groq(
     timeout=120
 )
 
-MODEL_NAME = "llama-3.1-8b-instant"
+MODEL_NAME = "openai/gpt-oss-20b"
 
 
 def generate_text(prompt: str) -> str:
